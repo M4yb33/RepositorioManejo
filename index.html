@@ -50,11 +50,21 @@
         .info-card:hover {
             transform: translateX(10px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }        .info-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .info-card h3 {
-            color: #333;
-            margin-bottom: 10px;
+        .info-card h3::before {
+            content: attr(data-icon);
+            font-size: 1.2em;
+            color: #4ecdc4;
+            font-weight: normal;
         }
 
         .info-card p {
@@ -116,13 +126,31 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .footer {
+        }        .footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 20px;
+        }
+
+        /* Reglas responsivas para mejorar la legibilidad */
+        @media (max-width: 768px) {
+            .info-card h3 {
+                font-size: 1.2em;
+                gap: 8px;
+            }
+            
+            .info-card h3::before {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-card h3 {
+                font-size: 1.1em;
+                flex-direction: row;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -133,21 +161,20 @@
             <p>Tu fuente de información tecnológica interactiva</p>
         </div>
 
-        <div class="content">
-            <div class="info-card">
-                <h3>🤖 Inteligencia Artificial</h3>
+        <div class="content">            <div class="info-card">
+                <h3 data-icon="🧠">Inteligencia Artificial</h3>
                 <p>La IA está revolucionando el mundo. Desde asistentes virtuales hasta vehículos autónomos, 
                 la inteligencia artificial está transformando cómo vivimos y trabajamos.</p>
             </div>
 
             <div class="info-card">
-                <h3>🌐 Internet de las Cosas (IoT)</h3>
+                <h3 data-icon="🌐">Internet de las Cosas (IoT)</h3>
                 <p>Más de 50 mil millones de dispositivos estarán conectados a internet para 2030. 
                 Desde refrigeradores inteligentes hasta ciudades conectadas.</p>
             </div>
 
             <div class="info-card">
-                <h3>⚡ Computación Cuántica</h3>
+                <h3 data-icon="⚛️">Computación Cuántica</h3>
                 <p>Los computadores cuánticos prometen resolver problemas que tomarían millones de años 
                 a las computadoras tradicionales, en solo segundos.</p>
             </div>
