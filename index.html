@@ -171,6 +171,42 @@
                 align-items: center;
             }
         }
+
+        /* Estilos para el botón de volver arriba */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 24px;
+        }
+
+        #scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            #scroll-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -285,7 +321,31 @@
         window.addEventListener('load', function() {
             setTimeout(showRandomFact, 1000);
         });
+
+        // Funcionalidad del botón volver arriba
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        // Mostrar/ocultar el botón basado en el scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Función de scroll suave al hacer clic
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
+    <script data-jsd-embedded data-key="17d7caf6-ad94-4208-ae9b-acef9e2017b0" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+
+    <!-- Botón de volver arriba -->
+    <button id="scroll-to-top" title="Volver arriba">↑</button>
+
 </body>
-<script data-jsd-embedded data-key="17d7caf6-ad94-4208-ae9b-acef9e2017b0" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 </html>
