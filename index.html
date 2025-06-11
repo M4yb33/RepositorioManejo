@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
@@ -49,8 +50,10 @@
 
         .info-card:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }        .info-card h3 {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h3 {
             color: #333;
             margin-bottom: 15px;
             font-size: 1.4em;
@@ -83,7 +86,7 @@
         }
 
         /* Separador entre stats y botones */
-        .stats + div[style] {
+        .stats+div[style] {
             border-top: 2px solid #e0e0e0;
             margin-top: 30px;
             padding-top: 20px;
@@ -126,7 +129,7 @@
 
         .interactive-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .hidden {
@@ -143,14 +146,25 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }        .footer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 20px;
-        }        /* Estilos del botón de cambio de tema */
+        }
+
+        /* Estilos del botón de cambio de tema */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -164,13 +178,13 @@
             font-size: 24px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 1000;
         }
 
         .theme-toggle:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Modo oscuro */
@@ -229,7 +243,7 @@
                 font-size: 1.2em;
                 gap: 8px;
             }
-            
+
             .info-card h3::before {
                 font-size: 1em;
             }
@@ -266,7 +280,7 @@
             align-items: center;
             cursor: pointer;
             border: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             z-index: 1000;
             font-size: 24px;
@@ -274,7 +288,7 @@
 
         #scroll-to-top:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -288,6 +302,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Botón de cambio de tema -->
     <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
@@ -300,22 +315,23 @@
             <p>Tu fuente de información tecnológica interactiva</p>
         </div>
 
-        <div class="content">            <div class="info-card">
+        <div class="content">
+            <div class="info-card">
                 <h3 data-icon="🧠">Inteligencia Artificial</h3>
-                <p>La IA está revolucionando el mundo. Desde asistentes virtuales hasta vehículos autónomos, 
-                la inteligencia artificial está transformando cómo vivimos y trabajamos.</p>
+                <p>La IA está revolucionando el mundo. Desde asistentes virtuales hasta vehículos autónomos,
+                    la inteligencia artificial está transformando cómo vivimos y trabajamos.</p>
             </div>
 
             <div class="info-card">
                 <h3 data-icon="🌐">Internet de las Cosas (IoT)</h3>
-                <p>Más de 50 mil millones de dispositivos estarán conectados a internet para 2030. 
-                Desde refrigeradores inteligentes hasta ciudades conectadas.</p>
+                <p>Más de 50 mil millones de dispositivos estarán conectados a internet para 2030.
+                    Desde refrigeradores inteligentes hasta ciudades conectadas.</p>
             </div>
 
             <div class="info-card">
                 <h3 data-icon="⚛️">Computación Cuántica</h3>
-                <p>Los computadores cuánticos prometen resolver problemas que tomarían millones de años 
-                a las computadoras tradicionales, en solo segundos.</p>
+                <p>Los computadores cuánticos prometen resolver problemas que tomarían millones de años
+                    a las computadoras tradicionales, en solo segundos.</p>
             </div>
 
             <div class="stats">
@@ -345,12 +361,13 @@
         <div class="footer">
             <p>&copy; 2025 Tech Info Hub - Mantente informado, mantente conectado</p>
         </div>
-    </div>    <script>
+    </div>
+    <script>
         // Función para alternar entre modo claro y oscuro
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
-            
+
             if (body.classList.contains('dark-mode')) {
                 // Cambiar a modo claro
                 body.classList.remove('dark-mode');
@@ -364,12 +381,12 @@
             }
         }
 
-        // Cargar tema guardado al cargar la página
+        // Cargar tema guardado al cargar la página 
         function loadSavedTheme() {
             const savedTheme = localStorage.getItem('theme');
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
-            
+
             if (savedTheme === 'dark') {
                 body.classList.add('dark-mode');
                 themeIcon.textContent = '☀️';
@@ -379,7 +396,7 @@
             }
         }
 
-        const techFacts = [
+        const techFacts = [ //Cambios de datos curiosos
             "El primer virus informático fue creado en 1971 y se llamaba 'Creeper'",
             "Google procesa más de 8.5 mil millones de búsquedas por día",
             "El término 'bug' en programación viene de un insecto real encontrado en una computadora en 1947",
@@ -431,7 +448,7 @@
                 </div>
             `;
         }        // Cargar tema y mostrar un dato curioso al cargar la página
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             loadSavedTheme(); // Cargar tema guardado
             setTimeout(showRandomFact, 1000);
         });
@@ -456,10 +473,13 @@
             });
         });
     </script>
-    <script data-jsd-embedded data-key="17d7caf6-ad94-4208-ae9b-acef9e2017b0" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+    <script data-jsd-embedded data-key="17d7caf6-ad94-4208-ae9b-acef9e2017b0"
+        data-base-url="https://jsd-widget.atlassian.com"
+        src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 
     <!-- Botón de volver arriba -->
     <button id="scroll-to-top" title="Volver arriba">↑</button>
 
 </body>
+
 </html>
