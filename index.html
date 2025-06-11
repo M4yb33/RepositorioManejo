@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
@@ -49,12 +50,24 @@
 
         .info-card:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .info-card h3 {
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card h3::before {
+            content: attr(data-icon);
+            font-size: 1.2em;
+            color: #4ecdc4;
+            font-weight: normal;
         }
 
         .info-card p {
@@ -73,7 +86,7 @@
         }
 
         /* Separador entre stats y botones */
-        .stats + div[style] {
+        .stats+div[style] {
             border-top: 2px solid #e0e0e0;
             margin-top: 30px;
             padding-top: 20px;
@@ -116,7 +129,7 @@
 
         .interactive-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .hidden {
@@ -133,8 +146,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .footer {
@@ -143,9 +163,152 @@
             text-align: center;
             padding: 20px;
         }
+
+        /* Estilos del botón de cambio de tema */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modo oscuro */
+        .dark-mode {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        .dark-mode .container {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .dark-mode .info-card {
+            background: #34495e;
+            border-left-color: #4ecdc4;
+        }
+
+        .dark-mode .info-card h3 {
+            color: #ecf0f1;
+        }
+
+        .dark-mode .info-card p {
+            color: #bdc3c7;
+        }
+
+        .dark-mode .tech-fact {
+            background: #34495e;
+            border-color: #3498db;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .footer {
+            background: #1a252f;
+        }
+
+        /* Transición suave entre temas */
+        body {
+            transition: background 0.3s ease;
+        }
+
+        .container {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .info-card {
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .tech-fact {
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Reglas responsivas para mejorar la legibilidad */
+        @media (max-width: 768px) {
+            .info-card h3 {
+                font-size: 1.2em;
+                gap: 8px;
+            }
+
+            .info-card h3::before {
+                font-size: 1em;
+            }
+
+            .theme-toggle {
+                width: 51px;
+                height: 50px;
+                font-size: 20px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-card h3 {
+                font-size: 1.1em;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        /* Estilos para el botón de volver arriba */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 24px;
+        }
+
+        #scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            #scroll-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
+    <!-- Botón de cambio de tema -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <div class="header">
             <h1>🚀 Tech Info Hub</h1>
@@ -154,21 +317,21 @@
 
         <div class="content">
             <div class="info-card">
-                <h3>🤖 Inteligencia Artificial</h3>
-                <p>La IA está revolucionando el mundo. Desde asistentes virtuales hasta vehículos autónomos, 
-                la inteligencia artificial está transformando cómo vivimos y trabajamos.</p>
+                <h3 data-icon="🧠">Inteligencia Artificial</h3>
+                <p>La IA está revolucionando el mundo. Desde asistentes virtuales hasta vehículos autónomos,
+                    la inteligencia artificial está transformando cómo vivimos y trabajamos.</p>
             </div>
 
             <div class="info-card">
-                <h3>🌐 Internet de las Cosas (IoT)</h3>
-                <p>Más de 50 mil millones de dispositivos estarán conectados a internet para 2030. 
-                Desde refrigeradores inteligentes hasta ciudades conectadas.</p>
+                <h3 data-icon="🌐">Internet de las Cosas (IoT)</h3>
+                <p>Más de 50 mil millones de dispositivos estarán conectados a internet para 2030.
+                    Desde refrigeradores inteligentes hasta ciudades conectadas.</p>
             </div>
 
             <div class="info-card">
-                <h3>⚡ Computación Cuántica</h3>
-                <p>Los computadores cuánticos prometen resolver problemas que tomarían millones de años 
-                a las computadoras tradicionales, en solo segundos.</p>
+                <h3 data-icon="⚛️">Computación Cuántica</h3>
+                <p>Los computadores cuánticos prometen resolver problemas que tomarían millones de años
+                    a las computadoras tradicionales, en solo segundos.</p>
             </div>
 
             <div class="stats">
@@ -221,9 +384,41 @@
             <p>&copy; 2025 Tech Info Hub - Mantente informado, mantente conectado</p>
         </div>
     </div>
-
     <script>
-        const techFacts = [
+        // Función para alternar entre modo claro y oscuro
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (body.classList.contains('dark-mode')) {
+                // Cambiar a modo claro
+                body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Cambiar a modo oscuro
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Cargar tema guardado al cargar la página 
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        const techFacts = [ //Cambios de datos curiosos
             "El primer virus informático fue creado en 1971 y se llamaba 'Creeper'",
             "Google procesa más de 8.5 mil millones de búsquedas por día",
             "El término 'bug' en programación viene de un insecto real encontrado en una computadora en 1947",
@@ -274,11 +469,30 @@
                     <p>${randomTip}</p>
                 </div>
             `;
-        }
-
-        // Mostrar un dato curioso al cargar la página
-        window.addEventListener('load', function() {
+        }        // Cargar tema y mostrar un dato curioso al cargar la página
+        window.addEventListener('load', function () {
+            loadSavedTheme(); // Cargar tema guardado
             setTimeout(showRandomFact, 1000);
+        });
+
+        // Funcionalidad del botón volver arriba
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        // Mostrar/ocultar el botón basado en el scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Función de scroll suave al hacer clic
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
         <script>
@@ -291,5 +505,6 @@
     </script>
 </body>
 <script data-jsd-embedded data-key="17d7caf6-ad94-4208-ae9b-acef9e2017b0" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+
 
 </html>
