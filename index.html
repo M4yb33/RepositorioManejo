@@ -150,6 +150,77 @@
             color: white;
             text-align: center;
             padding: 20px;
+        }        /* Estilos del botón de cambio de tema */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Modo oscuro */
+        .dark-mode {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        .dark-mode .container {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .dark-mode .info-card {
+            background: #34495e;
+            border-left-color: #4ecdc4;
+        }
+
+        .dark-mode .info-card h3 {
+            color: #ecf0f1;
+        }
+
+        .dark-mode .info-card p {
+            color: #bdc3c7;
+        }
+
+        .dark-mode .tech-fact {
+            background: #34495e;
+            border-color: #3498db;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .footer {
+            background: #1a252f;
+        }
+
+        /* Transición suave entre temas */
+        body {
+            transition: background 0.3s ease;
+        }
+
+        .container {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .info-card {
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .tech-fact {
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         /* Reglas responsivas para mejorar la legibilidad */
@@ -161,6 +232,14 @@
             
             .info-card h3::before {
                 font-size: 1em;
+            }
+
+            .theme-toggle {
+                width: 51px;
+                height: 50px;
+                font-size: 20px;
+                top: 15px;
+                right: 15px;
             }
         }
 
@@ -174,6 +253,11 @@
     </style>
 </head>
 <body>
+    <!-- Botón de cambio de tema -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <div class="header">
             <h1>🚀 Tech Info Hub</h1>
@@ -225,9 +309,40 @@
         <div class="footer">
             <p>&copy; 2025 Tech Info Hub - Mantente informado, mantente conectado</p>
         </div>
-    </div>
+    </div>    <script>
+        // Función para alternar entre modo claro y oscuro
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.classList.contains('dark-mode')) {
+                // Cambiar a modo claro
+                body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Cambiar a modo oscuro
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
 
-    <script>
+        // Cargar tema guardado al cargar la página
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            } else {
+                body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
         const techFacts = [
             "El primer virus informático fue creado en 1971 y se llamaba 'Creeper'",
             "Google procesa más de 8.5 mil millones de búsquedas por día",
@@ -279,10 +394,9 @@
                     <p>${randomTip}</p>
                 </div>
             `;
-        }
-
-        // Mostrar un dato curioso al cargar la página
+        }        // Cargar tema y mostrar un dato curioso al cargar la página
         window.addEventListener('load', function() {
+            loadSavedTheme(); // Cargar tema guardado
             setTimeout(showRandomFact, 1000);
         });
     </script>
